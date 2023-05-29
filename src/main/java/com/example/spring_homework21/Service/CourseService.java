@@ -53,6 +53,7 @@ public class CourseService {
         if(teacher == null || course == null){
             throw new ApiException("Teacher ID or Course ID is Wrong");
         }
+
         course.setTeacher(teacher);
         courseRepository.save(course);
     }
