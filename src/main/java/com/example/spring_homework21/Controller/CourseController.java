@@ -2,6 +2,7 @@ package com.example.spring_homework21.Controller;
 
 
 import com.example.spring_homework21.Model.Course;
+import com.example.spring_homework21.Model.Student;
 import com.example.spring_homework21.Model.Teacher;
 import com.example.spring_homework21.Service.CourseService;
 import com.example.spring_homework21.Service.TeacherService;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/course")
@@ -54,6 +56,12 @@ public class CourseController {
     public ResponseEntity getCourseTeacherName(@PathVariable Integer courseId){
         String teacher = courseService.getCourseTeacherName(courseId);
         return ResponseEntity.status(200).body("the name of the teacher in this Course is " + teacher);
+    }
+
+    @GetMapping("students/{courseId}")
+    public ResponseEntity getStudentOfCourse(@PathVariable Integer courseId){
+        Set<Student> studentSet = courseService.getStudentOfCourse(courseId);
+        return ResponseEntity.status(200).body(studentSet);
     }
 
 
