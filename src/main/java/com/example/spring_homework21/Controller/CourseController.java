@@ -58,7 +58,7 @@ public class CourseController {
         return ResponseEntity.status(200).body("the name of the teacher in this Course is " + teacher);
     }
 
-    @GetMapping("students/{courseId}")
+    @GetMapping("/students/{courseId}")
     public ResponseEntity getStudentOfCourse(@PathVariable Integer courseId){
         Set<Student> studentSet = courseService.getStudentOfCourse(courseId);
         return ResponseEntity.status(200).body(studentSet);
